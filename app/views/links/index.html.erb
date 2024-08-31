@@ -5,7 +5,7 @@
 
 <%= form_with model: Link.new do |form|%>
     <div class="flex items-center gap-2">
-        <%=  form.url_field :url, required: true, placeholder: "https://google.com", class: "flex-grow rounded"%>
+        <%=  form.url_field :url, required: true, autofocus: true, placeholder: "https://google.com", class: "flex-grow rounded"%>
         <%= form.button "Shorten URL", class: "px-3 py-2 bg-green-500 rounded text-white"%>
     </div>
 <% end %>
