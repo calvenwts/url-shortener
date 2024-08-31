@@ -1,0 +1,13 @@
+<div class="flex items-center gap-4">
+    <%= image_tag 'paper-clip.svg', class: 'size-6' %>
+    <h1 class="my-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900">Shorten a long URL</h1>
+</div>
+
+<%= form_with model: Link.new do |form|%>
+    <div class="flex items-center gap-2">
+        <%=  form.url_field :url, required: true, placeholder: "https://google.com", class: "flex-grow rounded"%>
+        <%= form.button "Shorten URL", class: "px-3 py-2 bg-green-500 rounded text-white"%>
+    </div>
+<% end %>
+
+<%= render @links %>
