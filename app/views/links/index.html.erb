@@ -9,4 +9,9 @@
 
 <div id="links"  class="flex flex-col gap-4">
     <%= render @links %>
+        <% if @pagy.pages > 1 %>
+        <div class="pt-8 mb-16 text-center">
+            <%== pagy_nav @pagy %>
+        </div>
+    <% end %>
 </div>
