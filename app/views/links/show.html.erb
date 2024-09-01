@@ -1,16 +1,21 @@
 <div class="flex items-center justify-between text-xs">
     <%= link_to "← Back to all links", root_path, class: "no-underline text-xs px-3 py-2 rounded bg-green-500 text-white"%>
     <div class="flex items-center gap-4">
-        <%= tag.div pluralize(@link.views_count, "view") %>
-        <%= link_to "Edit", edit_link_path(@link), class: "px-3 py-1.5 rounded bg-green-500 text-white no-underline" %>
+        <%= tag.div pluralize(@link.views_count, "view"), class: "w-12 h-8 flex items-center font-semibold" %>
+        <%= button_tag class: "flex items-center justify-center w-12 h-8 bg-green-500 rounded", data: {controller: "clipboard", clipboard_text: view_url(@link)} do %>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4">
+                <path fill-rule="evenodd" d="M18.97 3.659a2.25 2.25 0 0 0-3.182 0l-10.94 10.94a3.75 3.75 0 1 0 5.304 5.303l7.693-7.693a.75.75 0 0 1 1.06 1.06l-7.693 7.693a5.25 5.25 0 1 1-7.424-7.424l10.939-10.94a3.75 3.75 0 1 1 5.303 5.304L9.097 18.835l-.008.008-.007.007-.002.002-.003.002A2.25 2.25 0 0 1 5.91 15.66l7.81-7.81a.75.75 0 0 1 1.061 1.06l-7.81 7.81a.75.75 0 0 0 1.054 1.068L18.97 6.84a2.25 2.25 0 0 0 0-3.182Z" clip-rule="evenodd" />
+            </svg>
+        <% end %>
+        <%= link_to "Edit", edit_link_path(@link), class: "px-3 py-1.5 rounded bg-green-500 text-white no-underline w-12 h-8" %>
     </div>
 </div>
 
 <h1 class="mt-4"><%= @link.url %></h1>
-<%= @link.description %>
+<%= tag.div @link.description %>
 <%= link_to view_path(@link), target: :_blank, data: {turbo: false}, class: "text-xs px-3 py-1.5 rounded bg-green-500 no-underline text-white" do%>
     <%= favicon_image_tag @link.domain, class: "inline-block" %>
-    <%= @link.url %>
+    <%= truncate @link.url %>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline-block size-4">
         <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
     </svg>
