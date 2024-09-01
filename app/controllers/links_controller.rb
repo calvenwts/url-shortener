@@ -1,5 +1,5 @@
 class LinksController < ApplicationController 
-    before_action :set_link, only: [:show, :edit, :update, :destroy]
+    before_action :set_link, only: [:show, :update, :destroy]
 
     def index
       @links = Link.recent_first
@@ -21,9 +21,6 @@ class LinksController < ApplicationController
 
     def show
     end
-
-    def edit
-    end
   
     def update
       if @link.update(link_params)
@@ -37,7 +34,6 @@ class LinksController < ApplicationController
       @link.destroy
       redirect_to root_path, notice: "Link has been deleted."
     end
-  
   
     private 
   
