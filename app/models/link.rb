@@ -9,16 +9,16 @@ class Link < ApplicationRecord
         MetadataJob.perform_later(to_param)
     end
 
-    def self.find(id)
-        super ShortCode.decode(id)
-      end
+    def self.find_by_short_code(code)
+        find ShortCode.decode(code)
+    end
     
-      def to_param
+    def to_param
         ShortCode.encode(id)
-      end
+    end
 
-      def domain
+    def domain
         URI(url).host rescue URI::InvalidURIError
-      end
+    end
   end
   
