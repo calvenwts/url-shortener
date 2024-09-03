@@ -73,3 +73,4 @@ gem "chartkick", "~> 5.1"
 gem "groupdate", "~> 6.4"
 
 gem "pagy", "~> 6.0"
+gem "geocoder", "~> 1.8"

@@ -1,7 +1,7 @@
 <div class="flex items-center justify-between text-xs">
     <%= link_to "← Back to all links", root_path, class: "no-underline text-xs px-3 py-2 rounded bg-green-500 text-white"%>
     <div class="flex items-center gap-4">
-        <%= tag.div pluralize(@link.views_count, "view"), class: "w-12 h-8 flex items-center font-semibold" %>
+        <%= tag.div pluralize(@link.views_count, "view"), class: "w-20 h-8 flex items-center font-semibold" %>
         <%= button_tag class: "flex items-center justify-center w-12 h-8 bg-green-500 rounded", data: {controller: "clipboard", clipboard_text: view_url(@link)} do %>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="size-4">
                 <path fill-rule="evenodd" d="M18.97 3.659a2.25 2.25 0 0 0-3.182 0l-10.94 10.94a3.75 3.75 0 1 0 5.304 5.303l7.693-7.693a.75.75 0 0 1 1.06 1.06l-7.693 7.693a5.25 5.25 0 1 1-7.424-7.424l10.939-10.94a3.75 3.75 0 1 1 5.303 5.304L9.097 18.835l-.008.008-.007.007-.002.002-.003.002A2.25 2.25 0 0 1 5.91 15.66l7.81-7.81a.75.75 0 0 1 1.061 1.06l-7.81 7.81a.75.75 0 0 0 1.054 1.068L18.97 6.84a2.25 2.25 0 0 0 0-3.182Z" clip-rule="evenodd" />
@@ -21,3 +21,7 @@
 <% end %>
 
 <%= line_chart @link.views.group_by_day(:created_at, range: 2.weeks.ago..Time.now, expand_range: true).count %>
+
+<turbo-frame id="views-list">
+  <%= render 'views_list', link: @link %>
+</turbo-frame>

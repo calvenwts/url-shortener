@@ -1,0 +1,17 @@
+<h3>Views List</h3>
+<ul class="text-xs">
+  <% @views.each do |view| %>
+    <li>
+      <strong>User Agent:</strong> <%= view.user_agent %><br>
+      <strong>IP Address:</strong> <%= view.ip %><br>
+      <strong>City:</strong> <%= view.city || 'Unknown' %><br>
+      <strong>Country:</strong> <%= view.country || 'Unknown' %><br>
+      <strong>Viewed At:</strong> <%= view.created_at %>
+    </li>
+  <% end %>
+</ul>
+<% if @pagy.pages > 1 %>
+    <div class="pt-8 mb-16 text-center">
+        <%== pagy_nav(@pagy, link_extra: 'data-turbo-frame="views-list"') %>
+    </div>
+<% end %>

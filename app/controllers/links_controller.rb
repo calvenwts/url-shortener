@@ -22,6 +22,7 @@ class LinksController < ApplicationController
     end
 
     def show
+        @pagy, @views = pagy(@link.views.order(created_at: :desc), items: 10)
     end
   
     def update
