@@ -17,7 +17,7 @@ class LinksTest < ActionDispatch::IntegrationTest
     Link.destroy_all
     get links_path(page: 2)
     assert_redirected_to root_path
-
+  end
 
   test "link show" do 
     get link_path(links(:one))
