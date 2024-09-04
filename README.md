@@ -4,6 +4,8 @@
 
 ## [Live Demo](https://url-shortener-c3t7.onrender.com/)
 
+<img width="965" alt="image" src="https://github.com/user-attachments/assets/c23d8855-d90d-4af2-adee-b1274ebdba19">
+
 This project is developed on Ruby on Rails 7, TailwindCSS and PostgreSQL. This project should allow the user to perform:
 
 - View a list of shortened URL's by other users with the page's title

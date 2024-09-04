@@ -5,10 +5,9 @@ class ViewsTest < ActionDispatch::IntegrationTest
     link = links(:one)
     original_views_count = link.views_count
     assert_difference "View.count" do 
-      assert_difference "link.views_count" do
+      assert_difference "link.reload.views_count" do
         get view_path(link)
         assert_response :redirect
-        link.reload
       end
     end
   end
@@ -17,5 +16,11 @@ class ViewsTest < ActionDispatch::IntegrationTest
     link = links(:one)
     get view_path(link)
     assert_redirected_to link.url
+  end
+
+  test "should handle non-existent link" do
+    get view_path(id: 999_999)
+    assert_redirected_to root_path
+    assert_equal "Missing Link!", flash[:alert]
   end
 end
