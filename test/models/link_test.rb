@@ -6,6 +6,7 @@ class LinkTest < ActiveSupport::TestCase
   def setup
     @link_one = links(:one)
     @link_two = links(:two)
+    @invalid_link = links(:invalid)
   end
 
   test "should be valid with a valid URL" do
@@ -19,7 +20,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test "recent_first scope should return links in the correct order" do
-    assert_equal [@link_two, @link_one], Link.recent_first
+    assert_equal [@invalid_link, @link_two, @link_one], Link.recent_first
   end
 
   test "should return the correct domain" do
